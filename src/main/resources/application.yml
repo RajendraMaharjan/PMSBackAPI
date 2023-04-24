@@ -13,4 +13,4 @@ spring:
 #      on-profile: dev
 
   application:
-    name: RSMBackAPI
+    name: PMSBackAPI
