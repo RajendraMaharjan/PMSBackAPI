@@ -1,12 +1,13 @@
 package com.miu.pmtbackendapi.domain.user;
 
-import com.miu.pmtbackendapi.domain.auth.Role;
+import com.miu.pmtbackendapi.domain.auth.UserRole;
+import com.miu.pmtbackendapi.domain.enums.UserStatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,12 +17,17 @@ import java.util.Collection;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
     private String firstName;
     private String lastName;
-    private String password;
     private String email;
+    private String password;
+    private String contactNumber;
+    private UserStatusEnum userStatus;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Role> roles;
+//    @ManyToMany(mappedBy = "user")
+//    List<FavouriteProperty> favouriteProperty;
+
+    @OneToMany
+    List<UserRole> userRole;
 }
