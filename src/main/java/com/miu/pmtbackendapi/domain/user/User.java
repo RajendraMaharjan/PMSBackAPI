@@ -23,6 +23,7 @@ public class User {
     private String email;
     private String password;
     private String contactNumber;
+    @Enumerated(EnumType.STRING)
     private UserStatusEnum userStatus;
 
 //    @ManyToMany(mappedBy = "user")

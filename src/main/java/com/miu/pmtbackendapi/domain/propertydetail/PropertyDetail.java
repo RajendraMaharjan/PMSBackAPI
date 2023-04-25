@@ -14,6 +14,7 @@ public class PropertyDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pdId;
+    @Enumerated(EnumType.STRING)
     PropertyTypeEnum propertyType;
     private Float lotSize;
     private Float homeSize;
@@ -29,7 +30,7 @@ public class PropertyDetail {
     private Integer partialBathroomNum;
     private Double propertyPrice;
     private Double mortgageBalance;
-
+    @Enumerated(EnumType.STRING)
     private HomeConditionEnum homeCondition;
 
     private Boolean hasTenant;

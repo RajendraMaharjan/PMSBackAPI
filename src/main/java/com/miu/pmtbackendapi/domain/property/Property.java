@@ -17,7 +17,7 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long propertyId;
-
+    @Enumerated(EnumType.STRING)
     PropertyStatusEnum statusEnum;
 
     @OneToOne
