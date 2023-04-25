@@ -1,7 +1,7 @@
 package com.miu.pmtbackendapi.service.auth.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.miu.pmtbackendapi.domain.auth.Role;
+import com.miu.pmtbackendapi.domain.auth.UserRole;
 import com.miu.pmtbackendapi.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,18 +15,18 @@ public class CustomUserDetails implements UserDetails {
     private String email;
     @JsonIgnore
     private String password;
-    private Collection<Role> roles;
+    private Collection<UserRole> userRoles;
 
     public CustomUserDetails(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.roles = user.getRoles();
+        this.userRoles = user.getUserRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map((role -> new SimpleGrantedAuthority(role.getUser_role())))
+        return userRoles.stream()
+                .map((userRole -> new SimpleGrantedAuthority(userRole.getUser_role())))
                 .collect(Collectors.toList());
     }
 

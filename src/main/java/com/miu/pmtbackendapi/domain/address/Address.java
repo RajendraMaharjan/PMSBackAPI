@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.domain.auth;
+package com.miu.pmtbackendapi.domain.address;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,9 +8,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Role {
+public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String user_role;
+    private Long addressId;
+    private String street;
+    private String city;
+    private String state;
+    private String zip;
+    private String country;
 }

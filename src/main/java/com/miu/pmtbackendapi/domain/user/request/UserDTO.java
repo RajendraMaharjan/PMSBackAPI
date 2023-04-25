@@ -1,6 +1,6 @@
 package com.miu.pmtbackendapi.domain.user.request;
 
-import com.miu.pmtbackendapi.domain.auth.Role;
+import com.miu.pmtbackendapi.domain.auth.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +16,5 @@ public class UserDTO {
     private String password;
     private String email;
 
-    private Collection<Role> roles;
+    private Collection<UserRole> userRoles;
 }
