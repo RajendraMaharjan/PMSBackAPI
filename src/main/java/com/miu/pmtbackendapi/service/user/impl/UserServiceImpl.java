@@ -1,6 +1,7 @@
 package com.miu.pmtbackendapi.service.user.impl;
 
 import com.miu.pmtbackendapi.domain.user.response.Users;
+import com.miu.pmtbackendapi.service.commonadpater.Adapter;
 import com.miu.pmtbackendapi.service.user.adapter.UserAdapter;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.domain.user.request.UserDTO;
@@ -22,12 +23,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserAdapter adapter;
+    private final UserAdapter userAdapter;
+    private final Adapter adapter;
 
     @Override
     public Users getAllUsers() {
         List<User> users = userRepository.findAll();
-        return adapter.getResponsesForAllUsers(users);
+        return userAdapter.getResponsesForAllUsers(users);
     }
 
     @Override
