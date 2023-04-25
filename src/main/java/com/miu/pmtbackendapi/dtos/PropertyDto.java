@@ -1,45 +1,30 @@
-package com.miu.pmtbackendapi.domain.property;
+package com.miu.pmtbackendapi.dtos;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
 import com.miu.pmtbackendapi.domain.image.PropertyImage;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
 import com.miu.pmtbackendapi.domain.user.User;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-
-@Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Property {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long propertyId;
+public class PropertyDto {
 
     PropertyStatusEnum statusEnum;
 
-    @OneToOne
     Address address;
 
-    @OneToOne
     PropertyDetail propertyDetail;
 
-    @OneToMany
-    @JoinTable(name = "property_propertyimage")
     List<PropertyImage> propertyImages;
 
-//    @ManyToMany(mappedBy = "property")
-//    List<FavouriteProperty> favouriteProperty;
-
-    @ManyToOne
-    private User owner;
-
-
+    User Owner;
 }

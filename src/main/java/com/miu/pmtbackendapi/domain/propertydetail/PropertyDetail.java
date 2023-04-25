@@ -4,12 +4,16 @@ import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.HomeConditionEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PropertyDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
