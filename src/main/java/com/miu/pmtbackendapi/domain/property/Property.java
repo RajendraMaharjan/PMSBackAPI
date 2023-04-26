@@ -8,9 +8,7 @@ import com.miu.pmtbackendapi.domain.image.PropertyImage;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
 import com.miu.pmtbackendapi.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -19,11 +17,12 @@ import java.util.List;
 
 
 @Entity
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Property
-{
+public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "my_seq")
@@ -33,18 +32,23 @@ public class Property
     @Enumerated(EnumType.STRING)
     PropertyStatusEnum statusEnum;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Address address;
 
-    @OneToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     PropertyDetail propertyDetail;
 
-    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "property")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER, mappedBy = "property")
     @Fetch(FetchMode.JOIN)
-    @JsonManagedReference
+//    @JsonManagedReference
+    @JoinTable(name = "property_propimage",
+            joinColumns = {@JoinColumn(name = "prop_id")},
+            inverseJoinColumns = {@JoinColumn(name = "prop_image_id")}
+    )
     List<PropertyImage> propertyImages;
 
-//    @ManyToMany(mappedBy = "property")
+    //    @ManyToMany(mappedBy = "property")
 //    List<FavouriteProperty> favouriteProperty;
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -2,7 +2,6 @@ package com.miu.pmtbackendapi.service.commonadpater;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component

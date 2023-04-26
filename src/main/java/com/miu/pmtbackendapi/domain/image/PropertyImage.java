@@ -20,9 +20,9 @@ public class PropertyImage {
     private String imageName;
     private String imageLocation;
 
-    @JsonBackReference
-    @ManyToOne
-    private Property property;
+//    @JsonBackReference
+//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private Property property;
 
 
 }
