@@ -1,6 +1,7 @@
 package com.miu.pmtbackendapi.config.securityconfig;
 
 import com.miu.pmtbackendapi.filter.JwtFilter;
+import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
 
-    String[] roles = {"ADMIN", "OWNER", "CUSTOMER"};
+    String[] roles = {"ADMIN", "OWNER", "CUSTOMER", "VIEWER"};
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -38,13 +39,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        System.out.println("*******************************");
-        System.out.println();
-        System.out.println("*******************************");
         http.csrf().disable().cors()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/**").permitAll() //for testing reactapp only
+//                .requestMatchers("/api/v1/hello/**").hasAnyAuthority("ADMIN")
+//                .requestMatchers("/api/v1/authenticate/**", "/api/v1/users/forgotpassword").permitAll() //for testing reactapp only
+//                .requestMatchers("/api/v1/users/forgotpassword/admin").hasAnyAuthority("ADMIN") //for testing reactapp only
+//                .requestMatchers("/users/**").hasAnyAuthority("ADMIN") //for testing reactapp only
 //                .requestMatchers("/users/**").permitAll() //for testing reactapp only
 //                .requestMatchers("/authenticate/**").permitAll()
 //                .requestMatchers(HttpMethod.POST, "/token/refresh/").permitAll()
@@ -57,7 +58,14 @@ public class SecurityConfig {
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.logout(logout -> logout.deleteCookies("refreshToken"));
+        http.logout(logout -> logout.logoutUrl("/api/v1/authenticate/logout")
+                .deleteCookies("refreshToken").
+                addLogoutHandler((request, response, auth) -> {
+                    try {
+                        request.logout();
+                    } catch (ServletException e) {
+                    }
+                }));
 
         return http.build();
     }

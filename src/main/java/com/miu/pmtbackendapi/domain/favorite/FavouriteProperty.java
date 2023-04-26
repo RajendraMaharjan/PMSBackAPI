@@ -21,13 +21,12 @@ public class FavouriteProperty {
 //    @JoinTable(name = "favouriteProperty_property")
 //    List<Property> property;
 
-
     @ManyToOne
-    @JoinColumn(name = "favouriteProperty_user")
+    @JoinColumn(name = "pf_user_id")
     User user;
 
     @ManyToOne
-    @JoinColumn(name = "favouriteProperty_property")
+    @JoinColumn(name = "fp_propery_id")
     Property property;
 }
 
