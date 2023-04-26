@@ -5,16 +5,16 @@ import com.miu.pmtbackendapi.domain.auth.UserRole;
 import com.miu.pmtbackendapi.domain.enums.UserStatusEnum;
 import com.miu.pmtbackendapi.domain.property.Property;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+//@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "users")
 public class User {
     @Id
@@ -38,4 +38,19 @@ public class User {
     @JsonManagedReference
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Property> properties;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", userStatus=" + userStatus +
+                ", userRole=" + userRole +
+                ", properties=" + properties +
+                '}';
+    }
 }

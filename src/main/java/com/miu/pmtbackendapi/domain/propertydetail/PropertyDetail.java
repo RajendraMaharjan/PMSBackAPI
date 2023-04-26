@@ -5,16 +5,16 @@ import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.HomeConditionEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.util.Date;
 
 @Entity
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropertyDetail {
@@ -25,8 +25,8 @@ public class PropertyDetail {
 
     @Enumerated(EnumType.STRING)
     PropertyTypeEnum propertyType;
-    private Float lotSize;
-    private Float homeSize;
+    private Double lotSize;
+    private Double homeSize;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     Address address;

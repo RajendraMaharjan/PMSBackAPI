@@ -3,10 +3,13 @@ package com.miu.pmtbackendapi.service.offer.impl;
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.offer.Offer;
 import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
+import com.miu.pmtbackendapi.domain.property.Property;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
+import com.miu.pmtbackendapi.repo.PropertyRepository;
 import com.miu.pmtbackendapi.repo.offer.OfferRepository;
 import com.miu.pmtbackendapi.repo.user.UserRepository;
+import com.miu.pmtbackendapi.service.commonadpater.Adapter;
 import com.miu.pmtbackendapi.service.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,22 +24,37 @@ public class OfferServiceImpl implements OfferService {
 
 
     @Autowired
+    Adapter adapter;
+
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PropertyRepository propertyRepository;
 
     @Override
-    public OfferDTO placeOffer(OfferDTO offer) throws ItemNotFoundException {
+    public OfferDTO placeOffer(OfferDTO offerDTO) throws ItemNotFoundException {
 
-        User user = userRepository.findById(offer.getUser().getUserId()).get();
+        User existingUser = userRepository.findById(offerDTO.getUser().getUserId()).get();
 
-        System.out.println("userDetails = " + user);
-//        String role = offer.getUser().getUserRole().toString();
+        Property existingProperty = propertyRepository.getPropertyByPropertyId(offerDTO.getProperty().getPropertyId());
+        String role = existingUser.getUserRole().toString();
+
+        Offer offer = adapter.convertObject(offerDTO,Offer.class);
+
+        Property property = adapter.convertObject(offerDTO.getProperty(), Property.class);
+
+        offer.setProperty(property);
+        offer.setOfferedPrice(offer.getOfferedPrice());
+        offer.setOfferedPrice(offer.getOfferedPrice());
+        offer.setSubmissionDate(offer.getSubmissionDate());
+//        offer.setUser();
 
 
-//        if (role.equalsIgnoreCase("Customer")) {
-////            return offerRepository.save(offer);
-//        } else
-//            throw new ItemNotFoundException("Cannot Place an Offer");
+        if (role.equalsIgnoreCase("Customer")) {
+            offerRepository.save(offer);
+        } else
+            throw new ItemNotFoundException("Cannot Place an Offer");
 
         return null;
     }
