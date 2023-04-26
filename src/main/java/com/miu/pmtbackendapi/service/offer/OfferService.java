@@ -2,6 +2,7 @@ package com.miu.pmtbackendapi.service.offer;
 
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.offer.Offer;
+import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public interface OfferService {
 
-    Object placeOffer(Offer offer) throws ItemNotFoundException;
+    OfferDTO placeOffer(OfferDTO offer) throws ItemNotFoundException;
 
 
     void deleteOfferById(int offerId)throws ItemNotFoundException;

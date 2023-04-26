@@ -2,8 +2,11 @@ package com.miu.pmtbackendapi.service.offer.impl;
 
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.offer.Offer;
+import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
+import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.repo.offer.OfferRepository;
+import com.miu.pmtbackendapi.repo.user.UserRepository;
 import com.miu.pmtbackendapi.service.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,15 +19,26 @@ public class OfferServiceImpl implements OfferService {
     @Autowired
     private OfferRepository offerRepository;
 
+
+    @Autowired
+    private UserRepository userRepository;
+
+
     @Override
-    public Object placeOffer(Offer offer) throws ItemNotFoundException {
-        String role = offer.getUser().getUserRole().toString();
+    public OfferDTO placeOffer(OfferDTO offer) throws ItemNotFoundException {
+
+        User user = userRepository.findById(offer.getUser().getUserId()).get();
+
+        System.out.println("userDetails = " + user);
+//        String role = offer.getUser().getUserRole().toString();
 
 
-        if (role.equalsIgnoreCase("Customer")) {
-            return offerRepository.save(offer);
-        } else
-            throw new ItemNotFoundException("Cannot Place an Offer");
+//        if (role.equalsIgnoreCase("Customer")) {
+////            return offerRepository.save(offer);
+//        } else
+//            throw new ItemNotFoundException("Cannot Place an Offer");
+
+        return null;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.miu.pmtbackendapi.resource.offer;
 
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.offer.Offer;
+import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.service.offer.OfferService;
 import com.miu.pmtbackendapi.utils.PdfGenerator;
@@ -25,11 +26,11 @@ public class OfferController {
 
 
     //Place the offer
-    @PostMapping()
+    @PostMapping("/add")
     // @PreAuthorize(value = "hasRole('CUSTOMER')")
-    public ResponseEntity<?> placeOffer(@RequestBody Offer offer) throws ItemNotFoundException {
-
-        return ResponseEntity.ok(offerService.placeOffer(offer));
+    public ResponseEntity<?> placeOffer(@RequestBody OfferDTO offer) throws ItemNotFoundException {
+        System.out.println("The offer ddat " +offer);
+        return new ResponseEntity<>(offerService.placeOffer(offer),HttpStatus.OK);
 
     }
 
