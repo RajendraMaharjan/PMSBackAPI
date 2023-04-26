@@ -1,16 +1,14 @@
 package com.miu.pmtbackendapi.domain.auth;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
 public class UserRole {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
     private Long id;
     private String user_role;
 }
