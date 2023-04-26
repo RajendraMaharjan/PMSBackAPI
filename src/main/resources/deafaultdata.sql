@@ -33,16 +33,16 @@ INSERT INTO users(user_id, contact_number, email, first_name, last_name, passwor
 (10, '322-939-3416', 'lhilley9@miibeian.gov.cn', 'Lana', 'Hilley', 'LFcKQWBO', '1');
 
 INSERT INTO user_role VALUES
-                          (1,'Owner'),
-                          (2,'Customer'),
-                          (3,'Admin'),
-                          (4,'Viewer'),
-                          (5,'Owner'),
-                          (6,'Customer'),
-                          (7,'Admin'),
-                          (8,'Admin'),
-                          (9,'Customer'),
-                          (10,'Owner');
+(1,'Owner'),
+(2,'Customer'),
+(3,'Admin'),
+(4,'Viewer'),
+(5,'Owner'),
+(6,'Customer'),
+(7,'Admin'),
+(8,'Admin'),
+(9,'Customer'),
+(10,'Owner');
 
 INSERT INTO users_user_role VALUES
 (1,1),
@@ -64,7 +64,6 @@ insert into property_detail (pd_id, full_bathroom_num, has_tenant, home_conditio
 (5, 5, true, 'Need Major Work', 53, 69, 8000, 5, 100000, 'Land', 5, 1999, 5),
 (6, 6, false, 'Perfect', 99, 16, 4300, 6, 970000, 'Farm', 6, 2002, 6);
 
-
 insert into Property (property_id, status_enum, address_address_id, property_detail_pd_id) values
 (1, '264-975-7172', 1, 1),
 (2, '615-241-1257', 2, 2),
@@ -72,3 +71,28 @@ insert into Property (property_id, status_enum, address_address_id, property_det
 (4, '687-297-2999', 4, 4),
 (5, '595-981-5530', 5, 5),
 (6, '174-912-0393', 6, 6);
+
+insert into offer (offer_id, offered_price, submission_date, property_property_id, user_user_id) values
+(1, 20, '7/13/2022', 1, 1),
+(2, 80, '1/28/2023', 2, 2),
+(3, 96, '6/10/2022', 3, 3),
+(4, 100, '6/28/2022', 4, 4),
+(5, 98, '10/1/2022', 5, 5),
+(6, 7, '12/26/2022', 6, 6);
+
+insert into favourite_property (fav_property_id, favourite_property_property, favourite_property_user) values
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6);
+
+insert into property_propertyimage (property_property_id, property_images_p_image_id) values
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6);
+
