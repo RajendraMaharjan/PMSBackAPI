@@ -1,9 +1,8 @@
 package com.miu.pmtbackendapi.domain.image;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.miu.pmtbackendapi.domain.property.Property;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,15 @@ import lombok.NoArgsConstructor;
 public class PropertyImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
     private Long pImageId;
     private String imageName;
     private String imageLocation;
+
+    @JsonBackReference
+    @ManyToOne
+    private Property propertyImage;
+
+
 }

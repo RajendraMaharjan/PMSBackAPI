@@ -1,12 +1,12 @@
 spring:
   datasource:
-    password: 1
+    password: Omar5rea$
     url: jdbc:postgresql://localhost:5432/rsmbackend
     username: postgres
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 #      ddl-auto: validate
     properties:
       hibernate:
