@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,11 +24,17 @@ public class User {
     private String email;
     private String password;
     private String contactNumber;
+
+    @Enumerated(EnumType.STRING)
     private UserStatusEnum userStatus;
 
 //    @ManyToMany(mappedBy = "user")
 //    List<FavouriteProperty> favouriteProperty;
 
-    @OneToMany
-    List<UserRole> userRole;
+    //    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_role",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    Set<UserRole> userRole;
 }

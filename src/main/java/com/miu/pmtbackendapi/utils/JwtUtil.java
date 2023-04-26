@@ -17,12 +17,13 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class JwtUtil {
 
-    private String SECRET_KEY = "Real-state-propertymanagement-secretcode-from-some-secure-cloudÏ";
+    //    from-some-secure-cloud
+    private String SECRET_KEY = "Real-state-propertymanagement-secretcode";
 
     //Store in somesecret data source
     private final UserDetailsService userDetailsService;
 
-    private final long expiration = 60 * 60 * 5;
+    private final long expiration = 60 * 60 * 5 * 1000;
     //    private final long expiration = 50 * 60 * 60 * 60;
     //     private final long expiration = 5;
     private final long refreshExpiration = 5 * 60 * 60 * 60 * 60;

@@ -1,6 +1,10 @@
 package com.miu.pmtbackendapi.service.user.impl;
 
+import com.miu.pmtbackendapi.domain.user.request.ForgotPassword;
+import com.miu.pmtbackendapi.domain.user.response.ResetResponse;
 import com.miu.pmtbackendapi.domain.user.response.Users;
+import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
+import com.miu.pmtbackendapi.service.commonadpater.Adapter;
 import com.miu.pmtbackendapi.service.user.adapter.UserAdapter;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.domain.user.request.UserDTO;
@@ -22,12 +26,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserAdapter adapter;
+    private final UserAdapter userAdapter;
+    private final Adapter adapter;
 
     @Override
     public Users getAllUsers() {
         List<User> users = userRepository.findAll();
-        return adapter.getResponsesForAllUsers(users);
+        return userAdapter.getResponsesForAllUsers(users);
     }
 
     @Override
@@ -58,5 +63,36 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public UserResponse updateUser(UserDTO userDTO) throws ItemNotFoundException {
+        Optional<User> oUser = userRepository.findById(userDTO.getUserId());
+        if (oUser.isPresent()) {
+            User user = adapter.convertObject(userDTO, User.class);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            User updated = userRepository.save(user);
+            return adapter.convertObject(updated, UserResponse.class);
+        }
+        throw new ItemNotFoundException("User not found, unable to update the request.");
+    }
+
+    @Override
+    public ResetResponse forgotPassword(ForgotPassword fgDTO) throws ItemNotFoundException {
+        Optional<User> oUser = userRepository.findAUserByEmail(fgDTO.getEmail());
+        if (oUser.isPresent()) {
+            User user = oUser.get();
+            user.setPassword(passwordEncoder.encode("12345"));
+            userRepository.save(user);
+
+            return new ResetResponse(user.getEmail(), "Password reset successfully.");
+        }
+
+        throw new ItemNotFoundException("User not found");
+    }
+
+    @Override
+    public ResetResponse forgotPasswordAdmin(ForgotPassword fgDTO) throws ItemNotFoundException {
+        return forgotPassword(fgDTO);
     }
 }

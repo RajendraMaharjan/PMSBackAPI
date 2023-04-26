@@ -1,5 +1,6 @@
 package com.miu.pmtbackendapi.resource.user;
 
+import com.miu.pmtbackendapi.domain.user.request.ForgotPassword;
 import com.miu.pmtbackendapi.domain.user.request.UserDTO;
 import com.miu.pmtbackendapi.domain.user.response.UserResponse;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
@@ -7,6 +8,7 @@ import com.miu.pmtbackendapi.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,9 +38,14 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/registration", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(userService.saveUser(userDTO));
+    }
+
+    @PutMapping(path = "/", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> updateUser(@RequestBody UserDTO userDTO) throws ItemNotFoundException {
+        return ResponseEntity.ok(userService.updateUser(userDTO));
     }
 
     @DeleteMapping(path = "/{uId}")
@@ -50,6 +57,17 @@ public class UserController {
         } else {
             throw new ItemNotFoundException("Unable to delete the user. User with " + userId + " is unavailable.");
         }
+    }
+
+
+    @PutMapping(path = "/forgotpassword", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPassword fgDTO) throws ItemNotFoundException {
+        return ResponseEntity.ok(userService.forgotPassword(fgDTO));
+    }
+
+    @PutMapping(path = "/forgotpassword/admin", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> forgotPasswordAdmin(@RequestBody ForgotPassword fgDTO) throws ItemNotFoundException {
+        return ResponseEntity.ok(userService.forgotPasswordAdmin(fgDTO));
     }
 
 }
