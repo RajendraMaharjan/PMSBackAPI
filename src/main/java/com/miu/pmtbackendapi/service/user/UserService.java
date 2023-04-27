@@ -13,6 +13,8 @@ public interface UserService {
 
     Users getAllUsers();
 
+    Users getAllCustomers();
+
     Optional<UserResponse> getUser(Long id);
 
     UserResponse saveUser(UserDTO userDTO);

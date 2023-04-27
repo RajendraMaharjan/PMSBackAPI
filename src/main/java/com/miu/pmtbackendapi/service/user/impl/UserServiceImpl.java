@@ -36,6 +36,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Users getAllCustomers() {
+        List<User> users = userRepository.finAllCustomers();
+        return userAdapter.getResponsesForAllUsers(users);
+    }
+
+    @Override
     public Optional<UserResponse> getUser(Long id) {
         Optional<User> oUser = userRepository.findById(id);
         if (oUser.isPresent()) {

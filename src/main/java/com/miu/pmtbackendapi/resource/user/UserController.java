@@ -26,6 +26,12 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
+    @GetMapping(path = "/customers", produces = "application/json")
+    public ResponseEntity<?> getAllCustomers() {
+        return ResponseEntity.ok(userService.getAllCustomers());
+    }
+
+
     @GetMapping(path = "/{id}", produces = "application/json")
     public ResponseEntity<?> getUser(@PathVariable("id") Long id) throws ItemNotFoundException {
 
