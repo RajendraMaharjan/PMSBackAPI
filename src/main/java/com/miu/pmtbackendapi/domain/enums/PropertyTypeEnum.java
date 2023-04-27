@@ -1,7 +1,7 @@
 package com.miu.pmtbackendapi.domain.enums;
 
 public enum PropertyTypeEnum {
-    SINGLE_FAMILY("SINGLE FAMILY"), MULTI_FAMILY("MULTI FAMILY"), CONDO("CONDO"), MOBILE("MOBILE"), LAND("LAND"), FARM("FARM"), OTHER("OTHER");
+    SINGLE_FAMILY("SINGLE_FAMILY"), MULTI_FAMILY("MULTI_FAMILY"), CONDO("CONDO"), MOBILE("MOBILE"), LAND("LAND"), FARM("FARM"), OTHER("OTHER");
 
     String value;
 

@@ -16,6 +16,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
+import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
+
+import static org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter.Directive.COOKIES;
 
 @Configuration
 @EnableWebSecurity
@@ -43,6 +47,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
 //                .requestMatchers("/api/v1/hello/**").hasAnyAuthority("ADMIN")
+                .requestMatchers("/**").permitAll()
 //                .requestMatchers("/api/v1/authenticate/**", "/api/v1/users/forgotpassword").permitAll() //for testing reactapp only
 //                .requestMatchers("/api/v1/users/forgotpassword/admin").hasAnyAuthority("ADMIN") //for testing reactapp only
 //                .requestMatchers("/users/**").hasAnyAuthority("ADMIN") //for testing reactapp only
@@ -59,6 +64,7 @@ public class SecurityConfig {
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.logout(logout -> logout.logoutUrl("/api/v1/authenticate/logout")
+                .addLogoutHandler(new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(COOKIES))) //delete this line if its giving issue
                 .deleteCookies("refreshToken").
                 addLogoutHandler((request, response, auth) -> {
                     try {

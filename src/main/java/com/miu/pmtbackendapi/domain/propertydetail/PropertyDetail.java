@@ -1,28 +1,38 @@
 package com.miu.pmtbackendapi.domain.propertydetail;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.HomeConditionEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.Date;
 
 @Entity
-@Data
+//@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PropertyDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "prop_detail_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "prop_detail_sq")
     private Long pdId;
-    PropertyTypeEnum propertyType;
-    private Float lotSize;
-    private Float homeSize;
 
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    PropertyTypeEnum propertyType;
+    private Double lotSize;
+    private Double homeSize;
+
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     Address address;
 
-    @Temporal(TemporalType.DATE)
-    Date yearBuild;
+//    @Temporal(TemporalType.DATE)
+    String yearBuild;
 
     private Integer roomNum;
     private Integer fullBathroomNum;
@@ -30,6 +40,7 @@ public class PropertyDetail {
     private Double propertyPrice;
     private Double mortgageBalance;
 
+    @Enumerated(EnumType.STRING)
     private HomeConditionEnum homeCondition;
 
     private Boolean hasTenant;

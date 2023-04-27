@@ -24,12 +24,4 @@ public class UserDTO {
     private UserStatusEnum userStatus;
 
     private Collection<UserRole> userRoles;
-
-//    public String getUserStatus() {
-//        return userStatus.getValue();
-//    }
-//
-//    public void setUserStatus(UserStatusEnum userStatus) {
-//        this.userStatus = userStatus;
-//    }
 }

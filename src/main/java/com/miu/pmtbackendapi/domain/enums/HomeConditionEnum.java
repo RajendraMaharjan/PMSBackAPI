@@ -1,7 +1,8 @@
 package com.miu.pmtbackendapi.domain.enums;
 
 public enum HomeConditionEnum {
-    PERFECT("PERFECT"), EXCELLENT("EXCELLENT"), GOOD("GOOD"), NEED_MINOR_WORK("NEED MINOR WORK"), NEED_MAJOR_WORK("NEED MAJOR WORK");
+    
+    PERFECT("PERFECT"), EXCELLENT("EXCELLENT"), GOOD("GOOD"), NEED_MINOR_WORK("NEED_MINOR_WORK"), NEED_MAJOR_WORK("NEED_MAJOR_WORK");
 
     String value;
 

@@ -1,18 +1,27 @@
 package com.miu.pmtbackendapi.domain.image;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.miu.pmtbackendapi.domain.property.Property;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PropertyImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "prop_image_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "prop_image_sq")
     private Long pImageId;
     private String imageName;
     private String imageLocation;
+
+//    @JsonBackReference
+//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private Property property;
+
 }

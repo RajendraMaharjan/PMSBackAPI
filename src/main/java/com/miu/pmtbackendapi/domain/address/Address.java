@@ -1,17 +1,26 @@
 package com.miu.pmtbackendapi.domain.address;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "address_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "address_sq")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+//    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
     private Long addressId;
     private String street;
     private String city;
