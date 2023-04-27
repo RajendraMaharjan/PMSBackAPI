@@ -37,7 +37,7 @@ public class PropertyController {
     @GetMapping("/{id}")
     ResponseEntity<?> getPropertyById(@PathVariable("id") Long id) throws ItemNotFoundException {
         return new ResponseEntity<>(propertyService.
-                getPropertyById(id), HttpStatus.FOUND);
+                getPropertyById(id), HttpStatus.OK);
     }
 
     @PostMapping("/")
@@ -57,7 +57,7 @@ public class PropertyController {
 
     @GetMapping("/owner/{userId}")
     ResponseEntity<?> getPropertyByOwnerId(@PathVariable("userId") Long ownerId) throws ItemNotFoundException {
-        return new ResponseEntity<>(propertyService.getPropertyByOwner(ownerId), HttpStatus.FOUND);
+        return new ResponseEntity<>(propertyService.getPropertyByOwner(ownerId), HttpStatus.OK);
     }
 
     // TODO  search and filter
@@ -126,7 +126,7 @@ public class PropertyController {
 
         List<Property> results = propertySearchDao.findAllByCriteria(searchRequest);
 
-        return new ResponseEntity<>(results, HttpStatus.FOUND);
+        return new ResponseEntity<>(results, HttpStatus.OK);
 
     }
 }
