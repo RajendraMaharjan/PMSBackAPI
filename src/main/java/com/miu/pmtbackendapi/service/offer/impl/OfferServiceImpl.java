@@ -1,9 +1,11 @@
 package com.miu.pmtbackendapi.service.offer.impl;
 
 import com.itextpdf.text.DocumentException;
+import com.miu.pmtbackendapi.domain.auth.UserRole;
 import com.miu.pmtbackendapi.domain.offer.Offer;
 import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.domain.property.request.PropertyDTO;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.repo.PropertyRepository;
@@ -38,25 +40,24 @@ public class OfferServiceImpl implements OfferService {
         User existingUser = userRepository.findById(offerDTO.getUser().getUserId()).get();
 
         Property existingProperty = propertyRepository.getPropertyByPropertyId(offerDTO.getProperty().getPropertyId());
-        String role = existingUser.getUserRole().toString();
 
         Offer offer = adapter.convertObject(offerDTO,Offer.class);
 
         Property property = adapter.convertObject(offerDTO.getProperty(), Property.class);
 
         offer.setProperty(property);
-        offer.setOfferedPrice(offer.getOfferedPrice());
-        offer.setOfferedPrice(offer.getOfferedPrice());
-        offer.setSubmissionDate(offer.getSubmissionDate());
-//        offer.setUser();
+        offer.setOfferedPrice(offerDTO.getOfferedPrice());
+        offer.setOfferedPrice(offerDTO.getOfferedPrice());
+        offer.setSubmissionDate(offerDTO.getSubmissionDate());
 
+        for (UserRole userRole: existingUser.getUserRole()) {
+            if (userRole.getUser_role().equals("Customer")) {
+                offerRepository.save(offer);
+            } else
+                throw new ItemNotFoundException("Cannot Place an Offer");
+        }
 
-        if (role.equalsIgnoreCase("Customer")) {
-            offerRepository.save(offer);
-        } else
-            throw new ItemNotFoundException("Cannot Place an Offer");
-
-        return null;
+        return adapter.convertObject(offer,OfferDTO.class);
     }
 
     @Override
@@ -85,11 +86,6 @@ public class OfferServiceImpl implements OfferService {
 //            headers.setContentDispositionFormData("attachment", "example.pdf");
 //            headers.setContentLength(pdfBytes.length);
 //            return new ResponseEntity<String>(pdfBytes, headers, HttpStatus.OK);
-
-
-
-
-
         }
         else
             throw new ItemNotFoundException("Cannot delete offer");
@@ -97,11 +93,11 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public List<Offer> getAllOffersByUserId(int userId) {
-        return offerRepository.findAllOffersByUserId(userId);
+        return offerRepository.findAllByOfferByUserId(userId);
     }
 
     @Override
-    public List<Offer> getOfferHistoryByPropertyId(int propertyId) {
+    public List<Offer> getOfferHistoryByPropertyId(long propertyId) {
         return offerRepository.getOfferHistoryByPropertyId(propertyId);
     }
 
@@ -110,5 +106,10 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getOfferByOfferId(offerId);
     }
 
+    @Override
+    public PropertyDTO changeStatusProperty(long offerId) {
 
+
+        return null;
+    }
 }

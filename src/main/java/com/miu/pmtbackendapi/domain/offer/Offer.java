@@ -19,11 +19,10 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long offerId;
-    private LocalDateTime submissionDate;
+    private String submissionDate;
 
     @JsonBackReference
     @ManyToOne
-//    @JoinColumn(name = "user_offer")
     User user;
 
     private Double offeredPrice;

@@ -11,10 +11,11 @@ import java.util.List;
 public interface OfferRepository extends JpaRepository<Offer,Integer> {
     public Offer getOfferByOfferId(long offerId);
     public void removeByOfferId(int offerID);
-    @Query("select o from Offer o where o.user.userId  =:userId")
-    List<Offer> findAllOffersByUserId(int userId);
+    @Query("select o from Offer o where o.user.userId=:userId")
+    List<Offer> findAllByOfferByUserId(int userId);
 
     @Query("select o from Offer o where o.property.propertyId  =:propertyId")
-    List<Offer> getOfferHistoryByPropertyId(int propertyId);
+    List<Offer> getOfferHistoryByPropertyId(long propertyId);
+
 
 }
