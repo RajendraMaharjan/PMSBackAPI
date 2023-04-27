@@ -3,6 +3,8 @@ package com.miu.pmtbackendapi.resource.offer;
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.offer.Offer;
 import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
+import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.domain.property.dto.request.PropertyDTO;
 import com.miu.pmtbackendapi.exception.CustomMessage;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.service.offer.OfferService;
@@ -54,8 +56,6 @@ public class OfferController {
 //        return new ResponseEntity<>((pdfBytes), headers, HttpStatus.OK);
 //
         return offerService.getReceiptOfOffer(offerId, customerId);
-
-
     }
 
     //Get all offers
@@ -71,17 +71,20 @@ public class OfferController {
         return new ResponseEntity<>(offers, HttpStatus.OK);
     }
 
-//    @GetMapping("/{userId}")
-//    public ResponseEntity<List<Offer>> getAllOfferBasedOnUserId(@PathVariable(name = "userId") long userId) {
-//        List<Offer> offers = offerService.getOfferHistoryByPropertyId(userId);
-//        return new ResponseEntity<>(offers, HttpStatus.OK);
-//    }
-}
+    @PostMapping("/accept/{offerId}")
+    public ResponseEntity<?> acceptOfferAndChangeStatusById(@PathVariable int offerId) {
+        offerService.changeStatusProperty(offerId);
+        return new ResponseEntity<>(new CustomMessage("Status Change Successfully", HttpStatus.OK), HttpStatus.OK);
+    }
 
-    //List single offer
-//    @GetMapping("/{offerId}")
-//        public ResponseEntity<?> getOfferByOfferId(@PathVariable(name="offerId") long offerId){
-//            Offer offer = offerService.getOfferByOfferId(offerId);
-//            return new ResponseEntity<>(offer, HttpStatus.OK);
-//        }
-//    }
+    @PostMapping("/cancel/{offerId}")
+    public ResponseEntity<?> cancelOfferAndChangeStatusById(@PathVariable int offerId) {
+        boolean cancelOffer = offerService.cancelOfferChangeStatusProperty(offerId);
+        if (cancelOffer) {
+            return new ResponseEntity<>(new CustomMessage("Status Cannot Changed Because of CONTINGENT", HttpStatus.OK), HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>(new CustomMessage("Status Changed Successfully", HttpStatus.OK), HttpStatus.OK);
+
+    }
+}

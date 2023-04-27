@@ -12,4 +12,12 @@ public enum PropertyStatusEnum {
     public String getValue() {
         return value;
     }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+//    public String  setValue(String value){
+//      return   this.value = value;
+//    }
 }

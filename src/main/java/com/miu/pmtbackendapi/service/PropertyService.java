@@ -26,9 +26,15 @@ public interface PropertyService {
 
     Boolean cancelProperty(Long id);
 
+    //CHange this to ResponseProperties wrapper oobject
     ResponseProperties getPropertiesByParam(String street, String city, String state, String zip, String country,
                                             PropertyTypeEnum propertyType, Integer roomNum, Double propertyPrice);
 
+
     ResponseProperties filterPropertiesByCriteria(String street, String city, String state, String zip, String country,
                                                   PropertyTypeEnum propertyType, Integer roomNum, Double propertyPrice);
+
+    void saveStatusProperty(Property property);
+
+    void cancelStatusProperty(Property property);
 }
