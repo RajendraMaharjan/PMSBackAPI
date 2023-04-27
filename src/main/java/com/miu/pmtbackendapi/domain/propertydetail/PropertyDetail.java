@@ -31,8 +31,9 @@ public class PropertyDetail {
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     Address address;
 
-    @Temporal(TemporalType.DATE)
-    Date yearBuild;
+//    @Temporal(TemporalType.DATE)
+    String yearBuild;
+
 
     private Integer roomNum;
     private Integer fullBathroomNum;

@@ -31,6 +31,7 @@ public class User {
 //    @ManyToMany(mappedBy = "user")
 //    List<FavouriteProperty> favouriteProperty;
 
+    @Enumerated(EnumType.STRING)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<UserRole> userRole;
 
