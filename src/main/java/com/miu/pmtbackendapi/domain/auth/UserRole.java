@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "roles")
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")

@@ -5,10 +5,9 @@ import com.miu.pmtbackendapi.domain.auth.UserRole;
 import com.miu.pmtbackendapi.domain.offer.Offer;
 import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.domain.property.Property;
-import com.miu.pmtbackendapi.domain.property.request.PropertyDTO;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
-import com.miu.pmtbackendapi.repo.PropertyRepository;
+import com.miu.pmtbackendapi.repo.property.PropertyRepository;
 import com.miu.pmtbackendapi.repo.offer.OfferRepository;
 import com.miu.pmtbackendapi.repo.user.UserRepository;
 import com.miu.pmtbackendapi.service.commonadpater.Adapter;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+
 @Service
 public class OfferServiceImpl implements OfferService {
     @Autowired
@@ -41,7 +41,7 @@ public class OfferServiceImpl implements OfferService {
 
         Property existingProperty = propertyRepository.getPropertyByPropertyId(offerDTO.getProperty().getPropertyId());
 
-        Offer offer = adapter.convertObject(offerDTO,Offer.class);
+        Offer offer = adapter.convertObject(offerDTO, Offer.class);
 
         Property property = adapter.convertObject(offerDTO.getProperty(), Property.class);
 
@@ -61,23 +61,22 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public void deleteOfferById(int offerId)throws ItemNotFoundException {
-        Offer offer=offerRepository.getOfferByOfferId(offerId);
-        if ((offer.getProperty().getStatusEnum().toString()).equalsIgnoreCase("Pending")){
+    public void deleteOfferById(int offerId) throws ItemNotFoundException {
+        Offer offer = offerRepository.getOfferByOfferId(offerId);
+        if ((offer.getProperty().getStatusEnum().toString()).equalsIgnoreCase("Pending")) {
             offerRepository.removeByOfferId(offerId);
-        }
-        else
+        } else
             throw new ItemNotFoundException("Cannot delete offer");
     }
 
     @Override
     public String getReceiptOfOffer(int offerId, int customerId) throws ItemNotFoundException, DocumentException, IOException {
 
-        Offer offer=offerRepository.getOfferByOfferId(offerId);
-        if((offer.getProperty().getStatusEnum().toString()).equalsIgnoreCase("Contingent")){
+        Offer offer = offerRepository.getOfferByOfferId(offerId);
+        if ((offer.getProperty().getStatusEnum().toString()).equalsIgnoreCase("Contingent")) {
 
-            return offer.getOfferedPrice()+"is offerred for"+offer.getProperty();
-          //  generateReceipt();
+            return offer.getOfferedPrice() + "is offerred for" + offer.getProperty();
+            //  generateReceipt();
 
 
 //            byte[] pdfBytes = PdfGenerator.generatePdf(Arrays.asList(offer.getOfferId().toString(),"is generated with price ", offer.getOfferedPrice().toString() ,"for customer Id: ",Integer.toString(customerId)));
@@ -86,8 +85,8 @@ public class OfferServiceImpl implements OfferService {
 //            headers.setContentDispositionFormData("attachment", "example.pdf");
 //            headers.setContentLength(pdfBytes.length);
 //            return new ResponseEntity<String>(pdfBytes, headers, HttpStatus.OK);
-        }
-        else
+
+        } else
             throw new ItemNotFoundException("Cannot delete offer");
     }
 
@@ -106,10 +105,10 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getOfferByOfferId(offerId);
     }
 
-    @Override
-    public PropertyDTO changeStatusProperty(long offerId) {
-
-
-        return null;
-    }
+//    @Override
+//    public PropertyDTO changeStatusProperty(long offerId) {
+//
+//
+//        return null;
+//    }
 }

@@ -15,7 +15,6 @@ import org.hibernate.annotations.FetchMode;
 import java.io.Serializable;
 import java.util.List;
 
-
 @Entity
 //@Data
 @Getter
@@ -51,7 +50,7 @@ public class Property {
     //    @ManyToMany(mappedBy = "property")
 //    List<FavouriteProperty> favouriteProperty;
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User owner;
 
 

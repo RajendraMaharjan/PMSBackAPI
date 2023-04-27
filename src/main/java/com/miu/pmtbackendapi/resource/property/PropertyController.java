@@ -1,6 +1,5 @@
 package com.miu.pmtbackendapi.resource.property;
 
-
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import com.miu.pmtbackendapi.domain.property.Property;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
@@ -18,9 +17,8 @@ public class PropertyController {
 
     private final PropertyService propertyService;
 
-
     @GetMapping("/")
-    ResponseEntity<?> getAllProperties(){
+    ResponseEntity<?> getAllProperties() {
         return new ResponseEntity<>(propertyService.getAllProperties(), HttpStatus.FOUND);
     }
 
@@ -31,18 +29,18 @@ public class PropertyController {
     }
 
     @PostMapping("/")
-    ResponseEntity<?> createNewProperty(@RequestBody Property property){
+    ResponseEntity<?> createNewProperty(@RequestBody Property property) {
         return new ResponseEntity<>(propertyService.createProperty(property), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<?> deletePropertyById(@PathVariable("id") Long id){
+    ResponseEntity<?> deletePropertyById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(propertyService.deletePropertyById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<?> updatePropertyById(@PathVariable("id") Long id, @RequestBody Property property){
-        return new ResponseEntity<>(propertyService.updateProperty(id,property),HttpStatus.OK);
+    ResponseEntity<?> updatePropertyById(@PathVariable("id") Long id, @RequestBody Property property) {
+        return new ResponseEntity<>(propertyService.updateProperty(id, property), HttpStatus.OK);
     }
 
     @GetMapping("/owner/{userId}")
@@ -54,17 +52,16 @@ public class PropertyController {
 
 
     @GetMapping("/property/")
-    ResponseEntity<?> filterPropertyByParams(@RequestParam(value = "street",required = false) String street,
-                                             @RequestParam(value = "city",required = false) String city,
-                                             @RequestParam(value = "state",required = false) String state,
-                                             @RequestParam(value = "zip",required = false) String zip,
-                                             @RequestParam(value = "country",required = false) String country,
-                                             @RequestParam(value = "propertyType",required = false) PropertyTypeEnum propertyType,
-                                             @RequestParam(value = "roomNum",required = false) Integer roomNumber,
-                                             @RequestParam(value = "price",required = false) Double propertyPrice){
+    ResponseEntity<?> filterPropertyByParams(@RequestParam(value = "street", required = false) String street,
+                                             @RequestParam(value = "city", required = false) String city,
+                                             @RequestParam(value = "state", required = false) String state,
+                                             @RequestParam(value = "zip", required = false) String zip,
+                                             @RequestParam(value = "country", required = false) String country,
+                                             @RequestParam(value = "propertyType", required = false) PropertyTypeEnum propertyType,
+                                             @RequestParam(value = "roomNum", required = false) Integer roomNumber,
+                                             @RequestParam(value = "price", required = false) Double propertyPrice) {
 
 
-
-        return new ResponseEntity<>(propertyService.getPropertiesByParam(street,city,state,zip,country,propertyType,roomNumber,propertyPrice), HttpStatus.FOUND);
+        return new ResponseEntity<>(propertyService.getPropertiesByParam(street, city, state, zip, country, propertyType, roomNumber, propertyPrice), HttpStatus.FOUND);
     }
 }

@@ -1,6 +1,7 @@
 package com.miu.pmtbackendapi.domain.offer.request;
 
-import com.miu.pmtbackendapi.domain.property.request.PropertyIdDTO;
+import com.miu.pmtbackendapi.domain.property.dto.request.PropertyDTO;
+import com.miu.pmtbackendapi.domain.property.dto.request.PropertyIdDTO;
 import com.miu.pmtbackendapi.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;

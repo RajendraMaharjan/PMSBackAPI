@@ -2,6 +2,7 @@ package com.miu.pmtbackendapi.exception.exceptionhandler;
 
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.exception.CustomMessage;
+import com.miu.pmtbackendapi.exception.customexception.UserDeactivedException;
 import org.modelmapper.spi.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,21 @@ public class ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = BadCredentialsException.class) // when Invalid Credentials
     public ResponseEntity<ErrorMessage> handleInvalidCredentialsException(
-            BadCredentialsException e) {
+            BadCredentialsException e, WebRequest wq) {
+        return new ResponseEntity<>(
+                new ErrorMessage(e.getMessage()), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(value = UserDeactivedException.class) // when Invalid Credentials
+    public ResponseEntity<ErrorMessage> handleUserDeactivedException(
+            UserDeactivedException e, WebRequest wq) {
+        return new ResponseEntity<>(
+                new ErrorMessage(e.getMessage()), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(value = RuntimeException.class) // when Invalid Credentials
+    public ResponseEntity<ErrorMessage> handleRuntimeException(
+            RuntimeException e, WebRequest wq) {
         return new ResponseEntity<>(
                 new ErrorMessage(e.getMessage()), HttpStatus.UNAUTHORIZED);
     }

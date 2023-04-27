@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.dtos;
+package com.miu.pmtbackendapi.domain.property.dto.request;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
@@ -16,15 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertyDto {
+public class PropertyIdDTO {
+    private Long propertyId;
 
-    PropertyStatusEnum statusEnum;
-
-    Address address;
-
-    PropertyDetail propertyDetail;
-
-    List<PropertyImage> propertyImages;
-
-    User Owner;
 }

@@ -27,15 +27,14 @@ public class FavouriteProperty {
 //    @JoinTable(name = "favouriteProperty_property")
 //    List<Property> property;
 
-
     @ManyToOne
+    @JoinColumn(name = "pf_user_id")
     @JsonBackReference
-    @JoinColumn(name = "favouriteProperty_user")
     User user;
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "favouriteProperty_property")
+    @JoinColumn(name = "fp_propery_id")
     Property property;
 }
 
