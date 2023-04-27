@@ -30,14 +30,13 @@ public class UserServiceImpl implements UserService {
     private final Adapter adapter;
 
     @Override
-    public Users getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return userAdapter.getResponsesForAllUsers(users);
-    }
-
-    @Override
-    public Users getAllCustomers() {
-        List<User> users = userRepository.finAllCustomers();
+    public Users getAllUsers(String role) {
+        List<User> users;
+        if (role == null) {
+            users = userRepository.findAll();
+        } else {
+            users = userRepository.finAllCustomers(role);
+        }
         return userAdapter.getResponsesForAllUsers(users);
     }
 

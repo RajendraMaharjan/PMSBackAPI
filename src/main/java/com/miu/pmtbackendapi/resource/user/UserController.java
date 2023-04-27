@@ -22,15 +22,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(path = "/", produces = "application/json")
-    public ResponseEntity<?> getAllUsers() {
-        return ResponseEntity.ok(userService.getAllUsers());
+    public ResponseEntity<?> getAllUsers(@RequestParam(value = "role", required = false) String role) {
+        return ResponseEntity.ok(userService.getAllUsers(role));
     }
-
-    @GetMapping(path = "/customers", produces = "application/json")
-    public ResponseEntity<?> getAllCustomers() {
-        return ResponseEntity.ok(userService.getAllCustomers());
-    }
-
 
     @GetMapping(path = "/{id}", produces = "application/json")
     public ResponseEntity<?> getUser(@PathVariable("id") Long id) throws ItemNotFoundException {
