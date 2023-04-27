@@ -28,4 +28,8 @@ public interface PropertyService{
                                            PropertyTypeEnum propertyType, Integer roomNum, Double propertyPrice);
 
 
+    void saveStatusProperty(Property property);
+    void cancelStatusProperty(Property property);
+
+
 }

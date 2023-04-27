@@ -59,7 +59,7 @@ values (1, 1, true, 'PERFECT', 40.0, 92.0, 7800.0, 1, 260000.0, 'SINGLE_FAMILY',
 
 insert into Property (property_id, status_enum, address_address_id, owner_user_id, property_detail_pd_id)
 values (1, 'AVAILABLE', 1, 2, 1),
-       (2, 'CONTINGENT', 2, 2, 2),
+       (2, 'PENDING', 2, 2, 2),
        (3, 'PENDING', 3, 4, 3),
        (4, 'AVAILABLE', 4, 3, 4),
        (5, 'AVAILABLE', 5, 2, 5),

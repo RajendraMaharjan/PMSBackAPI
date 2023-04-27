@@ -2,9 +2,11 @@ package com.miu.pmtbackendapi.service.offer.impl;
 
 import com.itextpdf.text.DocumentException;
 import com.miu.pmtbackendapi.domain.auth.UserRole;
+import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
 import com.miu.pmtbackendapi.domain.offer.Offer;
 import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.domain.property.dto.request.PropertyDTO;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.repo.property.PropertyRepository;
@@ -12,6 +14,7 @@ import com.miu.pmtbackendapi.repo.offer.OfferRepository;
 import com.miu.pmtbackendapi.repo.user.UserRepository;
 import com.miu.pmtbackendapi.service.commonadpater.Adapter;
 import com.miu.pmtbackendapi.service.offer.OfferService;
+import com.miu.pmtbackendapi.service.property.impl.PropertyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +27,8 @@ public class OfferServiceImpl implements OfferService {
     @Autowired
     private OfferRepository offerRepository;
 
+    @Autowired
+    private PropertyServiceImpl propertyService;
 
     @Autowired
     Adapter adapter;
@@ -105,10 +110,34 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getOfferByOfferId(offerId);
     }
 
-//    @Override
-//    public PropertyDTO changeStatusProperty(long offerId) {
-//
-//
-//        return null;
-//    }
+    @Override
+    public void changeStatusProperty(int offerId) {
+
+      Offer offer = offerRepository.findById(offerId).get();
+
+      Property property = offer.getProperty();
+        System.out.println("property.getStatusEnum().getValue() = " + property.getStatusEnum().getValue());
+      if (property.getStatusEnum().getValue().equals("PENDING")){
+            propertyService.saveStatusProperty(property);
+      }else if (property.getStatusEnum().getValue().equals("AVAILABLE")){
+          propertyService.cancelStatusProperty(property);
+      }
+    }
+
+
+    @Override
+    public boolean cancelOfferChangeStatusProperty(int offerId) {
+
+        Offer offer = offerRepository.findById(offerId).get();
+        Property property = offer.getProperty();
+        System.out.println("property.getStatusEnum().getValue() = " + property.getStatusEnum().getValue());
+        if (property.getStatusEnum().getValue().equals("PENDING") ||property.getStatusEnum().getValue().equals("AVAILABLE")){
+            propertyService.cancelStatusProperty(property);
+            return false;
+        }else if (property.getStatusEnum().getValue().equals(PropertyStatusEnum.CONTINGENT)){
+
+        }
+        return true;
+
+    }
 }
