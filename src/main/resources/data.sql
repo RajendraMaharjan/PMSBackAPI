@@ -1,7 +1,5 @@
 select 1;
 
-
-
 INSERT INTO Address(address_id, street, city, state, zip, country)
 VALUES (1, '451 Springview Avenue', 'Texas', 'San Antonio', 1, 'United States'),
        (2, '04 Nancy Plaza', 'California', 'Los Angeles', 4, 'United States'),
@@ -21,7 +19,7 @@ VALUES (1, '694-976-8005', 'hpaiton0@pen.io', 'Horten', 'Paiton', '7V6UJ2', 'ACT
        (8, '496-624-6698', 'fnary7@soup.io', 'Fairfax', 'Nary', '79x89P2bNS', 'DEACTIVE'),
        (9, '983-436-2347', 'bmereweather8@patch.com', 'Bard', 'Mereweather', '1mUFOIeyksw', 'DEACTIVE'),
        (10, '322-939-3416', 'lhilley9@miibeian.gov.cn', 'Lana', 'Hilley', 'LFcKQWBO', 'ACTIVE');
-INSERT INTO user_role
+INSERT INTO roles
 VALUES (1, 'Owner'),
        (2, 'Customer'),
        (3, 'Admin'),
@@ -33,7 +31,7 @@ VALUES (1, 'Owner'),
        (9, 'Customer'),
        (10, 'Owner');
 
-INSERT INTO users_user_role
+INSERT INTO users_role
 VALUES (1, 1),
        (2, 2),
        (3, 3),

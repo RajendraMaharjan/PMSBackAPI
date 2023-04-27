@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.repo;
+package com.miu.pmtbackendapi.repo.address;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import org.springframework.data.repository.CrudRepository;

@@ -1,10 +1,10 @@
-package com.miu.pmtbackendapi.service.impl;
+package com.miu.pmtbackendapi.service.address.impl;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.dtos.AddressDTO;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
-import com.miu.pmtbackendapi.repo.AddressRepo;
-import com.miu.pmtbackendapi.service.AddressService;
+import com.miu.pmtbackendapi.repo.address.AddressRepo;
+import com.miu.pmtbackendapi.service.address.AddressService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

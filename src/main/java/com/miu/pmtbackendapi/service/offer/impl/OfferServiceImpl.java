@@ -6,7 +6,7 @@ import com.miu.pmtbackendapi.domain.offer.request.OfferDTO;
 import com.miu.pmtbackendapi.domain.property.Property;
 import com.miu.pmtbackendapi.domain.user.User;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
-import com.miu.pmtbackendapi.repo.PropertyRepository;
+import com.miu.pmtbackendapi.repo.property.PropertyRepository;
 import com.miu.pmtbackendapi.repo.offer.OfferRepository;
 import com.miu.pmtbackendapi.repo.user.UserRepository;
 import com.miu.pmtbackendapi.service.commonadpater.Adapter;

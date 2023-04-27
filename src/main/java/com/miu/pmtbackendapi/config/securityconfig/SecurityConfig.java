@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
 //                .requestMatchers("/api/v1/hello/**").hasAnyAuthority("ADMIN")
+                .requestMatchers("/**").permitAll()
 //                .requestMatchers("/api/v1/authenticate/**", "/api/v1/users/forgotpassword").permitAll() //for testing reactapp only
 //                .requestMatchers("/api/v1/users/forgotpassword/admin").hasAnyAuthority("ADMIN") //for testing reactapp only
 //                .requestMatchers("/users/**").hasAnyAuthority("ADMIN") //for testing reactapp only

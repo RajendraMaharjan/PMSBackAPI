@@ -1,16 +1,12 @@
-package com.miu.pmtbackendapi.service.impl;
+package com.miu.pmtbackendapi.service.propertydetail.impl;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
-import com.miu.pmtbackendapi.dtos.AddressDTO;
 import com.miu.pmtbackendapi.dtos.PropertyDetailDTO;
-import com.miu.pmtbackendapi.dtos.PropertyDto;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
-import com.miu.pmtbackendapi.repo.AddressRepo;
-import com.miu.pmtbackendapi.repo.PropertyDetailRepo;
-import com.miu.pmtbackendapi.repo.PropertyRepo;
-import com.miu.pmtbackendapi.service.PropertyDetailService;
-import jakarta.transaction.Transactional;
+import com.miu.pmtbackendapi.repo.address.AddressRepo;
+import com.miu.pmtbackendapi.repo.propertydetail.PropertyDetailRepository;
+import com.miu.pmtbackendapi.service.propertydetail.PropertyDetailService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -27,7 +23,7 @@ public class PropertyDetailServiceImpl implements PropertyDetailService {
 
     private final ModelMapper modelMapper;
 
-    private final PropertyDetailRepo propertyDetailRepo;
+    private final PropertyDetailRepository propertyDetailRepo;
 
     private final AddressRepo addressRepo;
 

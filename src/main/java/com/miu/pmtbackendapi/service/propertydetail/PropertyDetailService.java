@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.service;
+package com.miu.pmtbackendapi.service.propertydetail;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
