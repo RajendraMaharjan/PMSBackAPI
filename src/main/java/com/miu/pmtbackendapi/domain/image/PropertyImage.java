@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class PropertyImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "prop_image_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "prop_image_sq")
     private Long pImageId;
     private String imageName;
     private String imageLocation;
@@ -23,6 +23,5 @@ public class PropertyImage {
 //    @JsonBackReference
 //    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 //    private Property property;
-
 
 }

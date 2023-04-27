@@ -16,8 +16,11 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "address_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "address_sq")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+//    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
     private Long addressId;
     private String street;
     private String city;

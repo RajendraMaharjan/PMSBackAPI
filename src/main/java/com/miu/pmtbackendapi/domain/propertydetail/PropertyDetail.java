@@ -19,8 +19,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class PropertyDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "prop_detail_sq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "prop_detail_sq")
     private Long pdId;
 
     @Enumerated(EnumType.STRING)

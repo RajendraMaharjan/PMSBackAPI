@@ -15,8 +15,7 @@ import lombok.NoArgsConstructor;
 public class FavouriteProperty {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long favPropertyId;
 
 //    @ManyToMany

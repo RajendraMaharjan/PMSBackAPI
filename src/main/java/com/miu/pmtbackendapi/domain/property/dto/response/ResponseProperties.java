@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.domain.property.response;
+package com.miu.pmtbackendapi.domain.property.dto.response;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
@@ -15,11 +15,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseProperty {
-
-    PropertyStatusEnum statusEnum;
-    Address address;
-    PropertyDetail propertyDetail;
-    List<PropertyImage> propertyImages;
+public class ResponseProperties {
+    private Integer totalProperties;
+    private List<ResponseProperty> allProperties;
 
 }

@@ -2,6 +2,7 @@ package com.miu.pmtbackendapi.resource.property;
 
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.exception.CustomMessage;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.service.PropertyService;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,7 @@ public class PropertyController {
     // TODO  search and filter
 
 
-    @GetMapping("/property/")
+    @GetMapping("/search")
     ResponseEntity<?> filterPropertyByParams(@RequestParam(value = "street", required = false) String street,
                                              @RequestParam(value = "city", required = false) String city,
                                              @RequestParam(value = "state", required = false) String state,
@@ -63,5 +64,19 @@ public class PropertyController {
 
 
         return new ResponseEntity<>(propertyService.getPropertiesByParam(street, city, state, zip, country, propertyType, roomNumber, propertyPrice), HttpStatus.FOUND);
+    }
+
+    @GetMapping("/filter")
+    ResponseEntity<?> testFilter(@RequestParam(value = "street", required = false) String street,
+                                             @RequestParam(value = "city", required = false) String city,
+                                             @RequestParam(value = "state", required = false) String state,
+                                             @RequestParam(value = "zip", required = false) String zip,
+                                             @RequestParam(value = "country", required = false) String country,
+                                             @RequestParam(value = "propertyType", required = false) PropertyTypeEnum propertyType,
+                                             @RequestParam(value = "roomNum", required = false) Integer roomNumber,
+                                             @RequestParam(value = "price", required = false) Double propertyPrice) {
+
+
+        return new ResponseEntity<>(propertyService.filterPropertiesByCriteria(street, city, state, zip, country, propertyType, roomNumber, propertyPrice), HttpStatus.FOUND);
     }
 }

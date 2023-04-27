@@ -19,13 +19,13 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     @Query(value = "SELECT p FROM Property p " +
             "WHERE (:street is null OR p.address.street = :street) " +
-            "AND (:city is null OR p.address.city = :city) " + "" +
-            "AND (:state is null OR p.address.state = :state)" + "" +
-            "AND (:zip is null OR p.address.zip = :zip)" + "" +
-            "AND (:country is null OR p.address.country = :country)" +
-            "AND (:propertyType is null OR p.propertyDetail.propertyType = :propertyType)" +
-            "AND (:roomNum is null OR p.propertyDetail.roomNum = :roomNum)" +
-            "AND (:price is null OR p.propertyDetail.propertyPrice = :price)")
+            "OR (:city is null OR p.address.city = :city) " +
+            "OR (:state is null OR p.address.state = :state)" +
+            "OR (:zip is null OR p.address.zip = :zip)" +
+            "OR (:country is null OR p.address.country = :country)" +
+            "OR (:propertyType is null OR p.propertyDetail.propertyType = :propertyType)" +
+            "OR (:roomNum is null OR p.propertyDetail.roomNum = :roomNum)" +
+            "OR (:price is null OR p.propertyDetail.propertyPrice = :price)")
     List<Property> findPropertiesByParam(@Param("street") String street,
                                          @Param("city") String city,
                                          @Param("state") String state,
@@ -34,5 +34,15 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
                                          @Param("propertyType") PropertyTypeEnum propertyType,
                                          @Param("roomNum") Integer roomNum,
                                          @Param("price") Double price);
+
+
+    default List<Property> filterPropertiesByCriteria(String street, String city,
+                                                      String state, String zip, String country,
+                                                      PropertyTypeEnum propertyType, Integer roomNum,
+                                                      Double propertyPrice) {
+//        EntityManager entityManager = new E
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        return null;
+    }
 
 }

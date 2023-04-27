@@ -20,8 +20,8 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
-    @SequenceGenerator(name = "my_seq", sequenceName = "my_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "user_seq", initialValue = 11)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_seq")
     private Long userId;
     private String firstName;
     private String lastName;
@@ -32,21 +32,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserStatusEnum userStatus;
 
-//    @ManyToMany(mappedBy = "user")
-//    List<FavouriteProperty> favouriteProperty;
-
-//<<<<<<< HEAD
-//    //    @OneToMany
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "users_role",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "role_id")})
-//    Set<UserRole> userRole;
-//=======
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    List<UserRole> userRole;
-
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
