@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> oUser = userRepository.findAUserByEmail(fgDTO.getEmail());
         if (oUser.isPresent()) {
             User user = oUser.get();
-            user.setPassword(passwordEncoder.encode("12345"));
+            user.setPassword(passwordEncoder.encode(fgDTO.getPsw()));
             userRepository.save(user);
 
             return new ResetResponse(user.getEmail(), "Password reset successfully.");
