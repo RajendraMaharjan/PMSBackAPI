@@ -21,7 +21,7 @@ public class PropertyController {
 
     @GetMapping("/")
     ResponseEntity<?> getAllProperties() {
-        return new ResponseEntity<>(propertyService.getAllProperties(), HttpStatus.FOUND);
+        return new ResponseEntity<>(propertyService.getAllProperties(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

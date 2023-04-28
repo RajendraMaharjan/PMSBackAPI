@@ -81,21 +81,21 @@ values (1, 'AVAILABLE', 1, 1, 1),
 
 
 INSERT INTO PROPERTY_IMAGE(p_image_id, image_location, image_name)
-VALUES (1, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ5SURBVDjLpZPNS1RhFMaff2EWLW', 'NisiNam.avi'),
-       (2, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ5SURBVDjLpZPNS1RhFMaff2EWLW', 'NisiNam.avi'),
-       (3, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIiSURBVBgZpcHfa81hHMDx9/l+n8',
+VALUES (1, 'https://mum0-my.sharepoint.com/:f:/g/personal/santosh_manandhar_miu_edu/EmUwcNaWrwFHtW9LxRYlJmwBz8PEBTqf-864aXpzDqrvqg?e=8IE8H5/One.png', 'NisiNam.avi'),
+       (2, 'https://picsum.photos/seed/picsum/200/200', 'NisiNam.avi'),
+       (3, 'https://picsum.photos/seed/picsum/200/200',
         'SedJusto.jpeg'),
-       (4, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMoSURBVDjLndPLb5RVHMbx5515px',
+       (4, 'https://picsum.photos/seed/picsum/200/200',
         'IntegerAcLeo.tiff'),
-       (5, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJDSURBVDjLxVNdSFNhGH7OD3Nmua', 'Auctor.xls'),
-       (6, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGsSURBVDjLpZIxixNRFIW/kVHQQl',
+       (5, 'https://picsum.photos/seed/picsum/200/200', 'Auctor.xls'),
+       (6, 'https://picsum.photos/seed/picsum/200/200',
         'MorbiNonQuam.xls'),
-       (7, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJFSURBVDjLpZPNS1RhFMZ/5733zk',
+       (7, 'https://picsum.photos/seed/picsum/200/200',
         'PosuereNonummy.avi'),
-       (8, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJfSURBVDjLpZNrSFNhGMelD34op6', 'Id.mp3'),
-       (9, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMGSURBVBgZpcFNaJt1HMDx7/Mkbd',
+       (8, 'https://picsum.photos/seed/picsum/200/200', 'Id.mp3'),
+       (9, 'https://picsum.photos/seed/picsum/200/200',
         'Tristique.mp3'),
-       (10, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJwSURBVDjLjVNdSJNhFH62fWbNWb', 'Magna.xls');
+       (10, 'https://picsum.photos/seed/picsum/200/200', 'Magna.xls');
 
 INSERT INTO property_propimage (prop_id, prop_image_id)
 VALUES (2, 1),
@@ -106,4 +106,5 @@ VALUES (2, 1),
        (7, 6),
        (8, 7),
        (9, 8),
+       (1, 8),
        (10, 9);
