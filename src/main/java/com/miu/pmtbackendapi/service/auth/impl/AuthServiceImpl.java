@@ -16,8 +16,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
     private final JwtUtil jwtUtil;
     private final HttpServletRequest request;
 
@@ -42,10 +40,12 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException(e.getMessage());
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authentication.getName());
+        authentication.getPrincipal();
+        final CustomUserDetails userDetails =  userDetailsService.loadUserByUsername(authentication.getName());
         final String accessToken = jwtUtil.generateToken(userDetails);
         final String refreshToken = jwtUtil.generateRefreshToken(loginRequest.getEmail());
-        var loginResponse = new LoginResponse(accessToken, refreshToken);
+        final Long uId = userDetails.getId();
+        var loginResponse = new LoginResponse(accessToken, refreshToken, uId);
 
         return loginResponse;
 
@@ -64,7 +64,7 @@ public class AuthServiceImpl implements AuthService {
             }
 
             final String accessToken = jwtUtil.doGenerateToken(jwtUtil.getSubject(refreshTokenRequest.getAccessToken()));
-            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken());
+            var loginResponse = new LoginResponse(accessToken, refreshTokenRequest.getRefreshToken(), 0L);
 
             return loginResponse;
         }

@@ -22,7 +22,7 @@ public class EnquiryMessage {
     private String message;
     private LocalDateTime messageTime;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "property_id")
     Property property;
 }

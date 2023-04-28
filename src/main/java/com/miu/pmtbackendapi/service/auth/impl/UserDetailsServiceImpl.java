@@ -4,8 +4,6 @@ import com.miu.pmtbackendapi.domain.enums.UserStatusEnum;
 import com.miu.pmtbackendapi.exception.customexception.UserDeactivedException;
 import com.miu.pmtbackendapi.repo.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userRepository.findUserByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found.");

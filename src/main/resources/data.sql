@@ -13,16 +13,16 @@ VALUES (1, '451 Springview Avenue', 'Texas', 'San Antonio', 1, 'United States'),
        (10, '34222 Grayhawk Place', 'Iowa', 'Des Moines', 70190, 'United States');
 
 INSERT INTO users(user_id, contact_number, email, first_name, last_name, password, user_status)
-VALUES (1, '694-976-8005', 'hpaiton0@pen.io', 'Horten', 'Paiton', '7V6UJ2', 'ACTIVE'),
-       (2, '605-943-3250', 'cpoundsford1@msn.com', 'Claresta', 'Poundsford', 'lDIzDLLs9C', 'ACTIVE'),
-       (3, '372-499-7644', 'ejosey2@ucla.edu', 'Erin', 'Josey', 'q0dUG3', 'DEACTIVE'),
-       (4, '649-948-9215', 'sseden3@nydailynews.com', 'Siana', 'Seden', 'BcE6h3uovr', 'ACTIVE'),
-       (5, '563-404-4228', 'imorris4@accuweather.com', 'Ivette', 'Morris', 'jKmsyrOeGeie', 'DEACTIVE'),
-       (6, '863-760-9818', 'bmcghie5@gizmodo.com', 'Brinn', 'McGhie', '89hTYBbVZI', 'DEACTIVE'),
-       (7, '686-126-5099', 'bmarriott6@uol.com.br', 'Brina', 'Marriott', 'TgcAhRYSfoe', 'ACTIVE'),
-       (8, '496-624-6698', 'fnary7@soup.io', 'Fairfax', 'Nary', '79x89P2bNS', 'DEACTIVE'),
-       (9, '983-436-2347', 'bmereweather8@patch.com', 'Bard', 'Mereweather', '1mUFOIeyksw', 'DEACTIVE'),
-       (10, '322-939-3416', 'lhilley9@miibeian.gov.cn', 'Lana', 'Hilley', 'LFcKQWBO', 'ACTIVE');
+VALUES (1, '694-976-8005', 'hpaiton0@pen.io', 'Horten', 'Paiton', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ACTIVE'),
+       (2, '605-943-3250', 'cpoundsford1@msn.com', 'Claresta', 'Poundsford', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ACTIVE'),
+       (3, '372-499-7644', 'ejosey2@ucla.edu', 'Erin', 'Josey', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'DEACTIVE'),
+       (4, '649-948-9215', 'sseden3@nydailynews.com', 'Siana', 'Seden', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ACTIVE'),
+       (5, '563-404-4228', 'imorris4@accuweather.com', 'Ivette', 'Morris', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'DEACTIVE'),
+       (6, '863-760-9818', 'bmcghie5@gizmodo.com', 'Brinn', 'McGhie', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'DEACTIVE'),
+       (7, '686-126-5099', 'bmarriott6@uol.com.br', 'Brina', 'Marriott', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ACTIVE'),
+       (8, '496-624-6698', 'fnary7@soup.io', 'Fairfax', 'Nary', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'DEACTIVE'),
+       (9, '983-436-2347', 'bmereweather8@patch.com', 'Bard', 'Mereweather', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'DEACTIVE'),
+       (10, '322-939-3416', 'lhilley9@miibeian.gov.cn', 'Lana', 'Hilley', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'ACTIVE');
 INSERT INTO roles
 VALUES (1, 'Owner'),
        (2, 'Customer'),
@@ -81,21 +81,21 @@ values (1, 'AVAILABLE', 1, 1, 1),
 
 
 INSERT INTO PROPERTY_IMAGE(p_image_id, image_location, image_name)
-VALUES (1, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ5SURBVDjLpZPNS1RhFMaff2EWLW', 'NisiNam.avi'),
-       (2, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ5SURBVDjLpZPNS1RhFMaff2EWLW', 'NisiNam.avi'),
-       (3, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIiSURBVBgZpcHfa81hHMDx9/l+n8',
+VALUES (1, 'https://mum0-my.sharepoint.com/:f:/g/personal/santosh_manandhar_miu_edu/EmUwcNaWrwFHtW9LxRYlJmwBz8PEBTqf-864aXpzDqrvqg?e=8IE8H5/One.png', 'NisiNam.avi'),
+       (2, 'https://picsum.photos/seed/picsum/200/200', 'NisiNam.avi'),
+       (3, 'https://picsum.photos/seed/picsum/200/200',
         'SedJusto.jpeg'),
-       (4, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMoSURBVDjLndPLb5RVHMbx5515px',
+       (4, 'https://picsum.photos/seed/picsum/200/200',
         'IntegerAcLeo.tiff'),
-       (5, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJDSURBVDjLxVNdSFNhGH7OD3Nmua', 'Auctor.xls'),
-       (6, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGsSURBVDjLpZIxixNRFIW/kVHQQl',
+       (5, 'https://picsum.photos/seed/picsum/200/200', 'Auctor.xls'),
+       (6, 'https://picsum.photos/seed/picsum/200/200',
         'MorbiNonQuam.xls'),
-       (7, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJFSURBVDjLpZPNS1RhFMZ/5733zk',
+       (7, 'https://picsum.photos/seed/picsum/200/200',
         'PosuereNonummy.avi'),
-       (8, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJfSURBVDjLpZNrSFNhGMelD34op6', 'Id.mp3'),
-       (9, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMGSURBVBgZpcFNaJt1HMDx7/Mkbd',
+       (8, 'https://picsum.photos/seed/picsum/200/200', 'Id.mp3'),
+       (9, 'https://picsum.photos/seed/picsum/200/200',
         'Tristique.mp3'),
-       (10, 'c:/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJwSURBVDjLjVNdSJNhFH62fWbNWb', 'Magna.xls');
+       (10, 'https://picsum.photos/seed/picsum/200/200', 'Magna.xls');
 
 INSERT INTO property_propimage (prop_id, prop_image_id)
 VALUES (2, 1),
@@ -106,4 +106,5 @@ VALUES (2, 1),
        (7, 6),
        (8, 7),
        (9, 8),
+       (1, 8),
        (10, 9);

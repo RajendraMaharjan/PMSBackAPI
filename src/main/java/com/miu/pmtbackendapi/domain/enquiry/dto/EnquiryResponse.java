@@ -18,7 +18,6 @@ public class EnquiryResponse {
     private String contact;
     private String message;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime messageTime;
 
 
