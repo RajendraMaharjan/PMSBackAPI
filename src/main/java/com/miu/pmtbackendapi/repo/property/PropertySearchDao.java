@@ -1,10 +1,8 @@
-package com.miu.pmtbackendapi.domain.dao;
+package com.miu.pmtbackendapi.repo.property;
 
 import com.miu.pmtbackendapi.domain.address.Address;
-import com.miu.pmtbackendapi.domain.enums.HomeConditionEnum;
-import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
-import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
 import com.miu.pmtbackendapi.domain.property.Property;
+import com.miu.pmtbackendapi.domain.property.dto.request.SearchRequest;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -15,12 +13,9 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Repository
 @RequiredArgsConstructor
 public class PropertySearchDao {
-
-
     private final EntityManager em;
 
     public List<Property> findAllByCriteria(SearchRequest searchRequest) {

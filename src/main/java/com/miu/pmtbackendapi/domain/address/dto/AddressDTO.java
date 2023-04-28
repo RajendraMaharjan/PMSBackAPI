@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.domain.address;
+package com.miu.pmtbackendapi.domain.address.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

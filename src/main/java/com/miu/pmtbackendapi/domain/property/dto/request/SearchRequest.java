@@ -1,4 +1,4 @@
-package com.miu.pmtbackendapi.domain.dao;
+package com.miu.pmtbackendapi.domain.property.dto.request;
 
 
 import com.miu.pmtbackendapi.domain.address.Address;
@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SearchRequest {
-
 
     private Address address;
     private PropertyDetail propertyDetail;

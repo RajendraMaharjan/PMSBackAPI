@@ -2,7 +2,7 @@ package com.miu.pmtbackendapi.service.propertydetail.impl;
 
 import com.miu.pmtbackendapi.domain.address.Address;
 import com.miu.pmtbackendapi.domain.propertydetail.PropertyDetail;
-import com.miu.pmtbackendapi.dtos.PropertyDetailDTO;
+import com.miu.pmtbackendapi.domain.propertydetail.dto.PropertyDetailDTO;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.repo.address.AddressRepo;
 import com.miu.pmtbackendapi.repo.propertydetail.PropertyDetailRepository;

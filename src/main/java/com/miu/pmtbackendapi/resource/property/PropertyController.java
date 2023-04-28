@@ -2,8 +2,8 @@ package com.miu.pmtbackendapi.resource.property;
 
 
 import com.miu.pmtbackendapi.domain.address.Address;
-import com.miu.pmtbackendapi.domain.dao.PropertySearchDao;
-import com.miu.pmtbackendapi.domain.dao.SearchRequest;
+import com.miu.pmtbackendapi.repo.property.PropertySearchDao;
+import com.miu.pmtbackendapi.domain.property.dto.request.SearchRequest;
 import com.miu.pmtbackendapi.domain.enums.HomeConditionEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
