@@ -32,11 +32,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserStatusEnum userStatus;
 
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     Collection<UserRole> userRole;
+
 
     @JsonManagedReference
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
