@@ -1,7 +1,7 @@
 package com.miu.pmtbackendapi.service.address.impl;
 
 import com.miu.pmtbackendapi.domain.address.Address;
-import com.miu.pmtbackendapi.dtos.AddressDTO;
+import com.miu.pmtbackendapi.domain.address.dto.AddressDTO;
 import com.miu.pmtbackendapi.exception.customexception.ItemNotFoundException;
 import com.miu.pmtbackendapi.repo.address.AddressRepo;
 import com.miu.pmtbackendapi.service.address.AddressService;
