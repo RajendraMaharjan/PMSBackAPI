@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/offers")
+@CrossOrigin("*")
 public class OfferController {
     @Autowired
     private OfferService offerService;

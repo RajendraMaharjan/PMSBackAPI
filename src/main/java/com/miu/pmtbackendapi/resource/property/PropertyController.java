@@ -46,7 +46,7 @@ public class PropertyController {
 
     @GetMapping("/owner/{userId}")
     ResponseEntity<?> getPropertyByOwnerId(@PathVariable("userId") Long ownerId) throws ItemNotFoundException {
-        return new ResponseEntity<>(propertyService.getPropertyByOwner(ownerId), HttpStatus.FOUND);
+        return new ResponseEntity<>(propertyService.getPropertyByOwner(ownerId), HttpStatus.OK);
     }
 
     // TODO  search and filter
