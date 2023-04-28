@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Users getAllUsers();
+    Users getAllUsers(String role);
 
     Optional<UserResponse> getUser(Long id);
 
