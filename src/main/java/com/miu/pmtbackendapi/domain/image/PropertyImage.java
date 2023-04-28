@@ -19,6 +19,8 @@ public class PropertyImage {
     private Long pImageId;
     private String imageName;
     private String imageLocation;
+//    private Long imageSize;
+//    private byte[] imageByte;
 
 //    @JsonBackReference
 //    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

@@ -3,7 +3,7 @@ package com.miu.pmtbackendapi.service.property.impl;
 
 import com.miu.pmtbackendapi.domain.enums.PropertyStatusEnum;
 import com.miu.pmtbackendapi.domain.enums.PropertyTypeEnum;
-import com.miu.pmtbackendapi.domain.offer.Offer;
+import com.miu.pmtbackendapi.domain.image.PropertyImage;
 import com.miu.pmtbackendapi.domain.property.Property;
 import com.miu.pmtbackendapi.domain.property.dto.response.ResponseProperties;
 import com.miu.pmtbackendapi.domain.property.dto.response.ResponseProperty;
@@ -13,17 +13,19 @@ import com.miu.pmtbackendapi.repo.address.AddressRepo;
 import com.miu.pmtbackendapi.repo.offer.OfferRepository;
 import com.miu.pmtbackendapi.repo.property.PropertyRepository;
 import com.miu.pmtbackendapi.repo.propertydetail.PropertyDetailRepository;
-import com.miu.pmtbackendapi.service.PropertyService;
 import com.miu.pmtbackendapi.service.commonadpater.Adapter;
+import com.miu.pmtbackendapi.service.property.PropertyService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -68,6 +70,27 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public ResponseProperty createProperty(Property property) {
+
+//        List<PropertyImage> images = Arrays.stream(files)
+//                .filter(f -> f.isEmpty())
+//                .map(m -> {
+//                    PropertyImage single = new PropertyImage();
+//
+//                    try {
+//                        String fileName = m.getOriginalFilename();
+//                        String main = m.getName();
+//                        long fileSize = m.getSize();
+//                        byte[] data = m.getBytes();
+//                        single.setImageByte(data);
+////                        single.setImageLocation();
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    return single;
+//
+//                }).collect(Collectors.toList());
+//
+//        property.setPropertyImages(images);
         Property newProperty = propertyRepo.save(property);
         ResponseProperty propertyDto = adapter.convertObject(newProperty, ResponseProperty.class);
         return propertyDto;
