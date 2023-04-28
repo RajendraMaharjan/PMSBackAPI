@@ -117,7 +117,7 @@ public class OfferServiceImpl implements OfferService {
 
       Property property = offer.getProperty();
         System.out.println("property.getStatusEnum().getValue() = " + property.getStatusEnum().getValue());
-      if (property.getStatusEnum().getValue().equals("PENDING")){
+      if (property.getStatusEnum().getValue().equals("AVAILABLE")){
             propertyService.saveStatusProperty(property);
       }else if (property.getStatusEnum().getValue().equals("AVAILABLE")){
           propertyService.cancelStatusProperty(property);
