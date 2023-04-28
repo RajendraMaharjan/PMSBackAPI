@@ -81,21 +81,21 @@ values (1, 'AVAILABLE', 1, 1, 1),
 
 
 INSERT INTO PROPERTY_IMAGE(p_image_id, image_location, image_name)
-VALUES (1, 'https://images.unsplash.com/photo-1628133287836-40bd5453bed1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'NisiNam.avi'),
-       (2, 'https://images.unsplash.com/photo-1592595896551-12b371d546d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80', 'NisiNam.avi'),
-       (3, 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+VALUES (1, 'https://mum0-my.sharepoint.com/:f:/g/personal/santosh_manandhar_miu_edu/EmUwcNaWrwFHtW9LxRYlJmwBz8PEBTqf-864aXpzDqrvqg?e=8IE8H5/One.png', 'NisiNam.avi'),
+       (2, 'https://picsum.photos/seed/picsum/200/200', 'NisiNam.avi'),
+       (3, 'https://picsum.photos/seed/picsum/200/200',
         'SedJusto.jpeg'),
-       (4, 'https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+       (4, 'https://picsum.photos/seed/picsum/200/200',
         'IntegerAcLeo.tiff'),
-       (5, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'Auctor.xls'),
-       (6, 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2342&q=80',
+       (5, 'https://picsum.photos/seed/picsum/200/200', 'Auctor.xls'),
+       (6, 'https://picsum.photos/seed/picsum/200/200',
         'MorbiNonQuam.xls'),
-       (7, 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+       (7, 'https://picsum.photos/seed/picsum/200/200',
         'PosuereNonummy.avi'),
-       (8, 'https://images.unsplash.com/photo-1592595896616-c37162298647?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'Id.mp3'),
-       (9, 'https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+       (8, 'https://picsum.photos/seed/picsum/200/200', 'Id.mp3'),
+       (9, 'https://picsum.photos/seed/picsum/200/200',
         'Tristique.mp3'),
-       (10, 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'Magna.xls');
+       (10, 'https://picsum.photos/seed/picsum/200/200', 'Magna.xls');
 
 INSERT INTO property_propimage (prop_id, prop_image_id)
 VALUES (2, 1),
@@ -108,3 +108,16 @@ VALUES (2, 1),
        (9, 8),
        (1, 8),
        (10, 9);
+
+
+INSERT INTO offer (offer_id, offered_price, property_property_id, user_user_id, submission_date)
+VALUES (1, 222,1,6,7/13/2025),
+       (2, 333,2,6,7/13/2025),
+       (3, 444,3,6,7/13/2025),
+       (4, 555,4,5,7/13/2025),
+       (5, 666,5,6,7/13/2025),
+       (6, 333,6,7,7/13/2025),
+       (7, 444,7,8,7/13/2025),
+       (8, 555,8,9,7/13/2025),
+       (9, 666,9,10,7/13/2025),
+       (10, 666,10,4,7/13/2025);
