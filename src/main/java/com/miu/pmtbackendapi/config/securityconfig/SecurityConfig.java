@@ -1,5 +1,6 @@
 package com.miu.pmtbackendapi.config.securityconfig;
 
+import com.miu.pmtbackendapi.domain.enums.RoleEnum;
 import com.miu.pmtbackendapi.filter.JwtFilter;
 import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
@@ -48,13 +49,19 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
 //                .requestMatchers("/api/v1/hello/**").hasAnyAuthority("ADMIN")
                 .requestMatchers("/**").permitAll()
-//                .requestMatchers("/api/v1/authenticate/**", "/api/v1/users/forgotpassword").permitAll() //for testing reactapp only
-//                .requestMatchers("/api/v1/users/forgotpassword/admin").hasAnyAuthority("ADMIN") //for testing reactapp only
-//                .requestMatchers("/users/**").hasAnyAuthority("ADMIN") //for testing reactapp only
-//                .requestMatchers("/users/**").permitAll() //for testing reactapp only
-//                .requestMatchers("/authenticate/**").permitAll()
-//                .requestMatchers(HttpMethod.POST, "/token/refresh/").permitAll()
-//                .requestMatchers("/admin").hasAnyAuthority("ADMIN")
+
+                .requestMatchers("/api/v1/authenticate/login").permitAll()
+                .requestMatchers("/api/v1/authenticate/token/refresh").permitAll()
+                .requestMatchers("/api/v1/authenticate/logout").permitAll()
+                .requestMatchers("/api/v1/users/forgotpassword/").permitAll()
+                .requestMatchers("/api/v1/users/registration").permitAll()
+
+//                .requestMatchers("/api/v1/users/*").hasAnyAuthority(RoleEnum.ADMIN.getVal())
+//                .requestMatchers("/api/v1/users/forgotpassword/admin").hasAnyAuthority(RoleEnum.ADMIN.getVal())
+//
+//                .requestMatchers("/api/v1/favourite/").hasAnyAuthority(RoleEnum.CUSTOMER.getVal())
+//                .requestMatchers("/enqiry/**").hasAnyAuthority(RoleEnum.CUSTOMER.getVal(),RoleEnum.OWNER.getVal())
+
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement()
